@@ -67,8 +67,7 @@
     font-family: 'Lora', 'Times New Roman', serif;
 }
 
-@mixins sans-serif-font() {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Ariel,
-    sans-serif;
+@mixin sans-serif-font() {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Ariel, sans-serif;
 }
 
