@@ -16,5 +16,15 @@ gulp.task('css', function () {
     .pipe(uglifycss({
       "uglyComments": true
     }))
-    .pipe(gulp.dest('./css/blog.min.css'));
+    .pipe(gulp.dest('./css'));
 });
+
+gulp.task('run', ['sass', 'css']);
+
+gulp.task('watch', function(){
+    gulp.watch('./scss/*.scss', ['sass']);
+    gulp.watch('./css/*.css', ['css']);
+});
+
+
+exports.default = defaultTask;
