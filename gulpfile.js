@@ -43,17 +43,27 @@ function clean() {
 // Move dependencies from node_modules into vendor directory
 function modules() {
     //Bootstrap
-    let bootstrap = gulp.src('./node_modules/dist/**/*')
+    let bootstrap = gulp.src('./node_modules/bootstrap/dist/**/*')
     .pipe(gulp.dest('./vendor/bootstrap'));
     // Font Awesome CSS
+    let fontAwesomeCSS = gulp.src('./node_modules/@fortawesome/fontawesome-free/css/*')
+    .pipe(gulp.dest('./vendor/fontawesome/css'))
     // Font Awesome Webfonts
+    let fontAwesomeWebfonts = gulp.src('./node_modules/@fortawesome/fontawesome-free/webfonts/*')
+    .pipe(gulp.dest('./vendor/fontawesome/webfonts'))
     // jQuery
     let jquery = gulp.src([
         './node_modules/jquery/dist/*',
         '!./node_modules/jquery/dist/core.js'
     ])
     .pipe(gulp.dest('./vendor/jquery'));
-    return merge(bootstrap, jquery);
+    return merge(bootstrap, jquery, fontAwesomeCSS, fontAwesomeWebfonts);
+}
+
+//CSS
+
+function css() {
+    
 }
 
 
@@ -66,11 +76,6 @@ function watchFiles() {
 const vendor = gulp.series(clean, modules);
 const watch = gulp.parallel(watchFiles, browserSync);
 
-
-//gulp.task('watch', function(){
-//    gulp.watch('./scss/*.scss', ['sass']);
-//    gulp.watch('./css/*.css', ['css']);
-//});
 
 
 exports.watch = watch;

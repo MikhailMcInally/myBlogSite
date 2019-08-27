@@ -4,6 +4,7 @@
   "description": "my personal blog application",
   "main": "index.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1"
