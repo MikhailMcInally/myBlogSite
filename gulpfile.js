@@ -1,24 +1,32 @@
+'use strict';
+
+// Load plugins
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const uglifycss = require('gulp-uglifycss');
+const cleanCSS = require('gulp-clean-css');
+const plumber = require('gulp-plumber');
 const browsersync = require('browser-sync').create();
 const merge = require('merge-stream');
+const rename =require('gulp-rename');
 const header = require('gulp-header');
 const del = require('del');
+const autoprefixer = require('gulp-autoprefixer');
 
-// Load package.json
+// Load package.json for banner
 const pkg = require('./package.json');
 
+//Set the banner content
 const banner = ['/*!\n',
-    ' * Start Bootstrap - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
+    ' * myBlogSite - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)',
     ' * Copyright 2013-' + (new Date()).getFullYear(), 
-    '<%= pkg.author %>\n',
-    ' * Licensed under <%= pkg.license %> (https://github.com/MikhailMcInally/<%= pkg.name %>/blob/master/LICENSE)\n',
-    ' */\n',
+    '<%= pkg.author %>',
+    ' * Licensed under <%= pkg.license %> (https://github.com/MikhailMcInally/<%= pkg.name %>/blob/master/LICENSE)',
+    ' */',
     '\n'
 ].join('\n');
 
-//BrowserSync
+// BrowserSync
 function browserSync(done) {
     browsersync.init({
         server: {
@@ -29,13 +37,13 @@ function browserSync(done) {
     done();
 }
 
-//BrowserSyncReload
+// BrowserSyncReload
 function browserSyncReload(done) {
     browsersync.reload();
     done();
 }
 
-//Clean Vendor
+// Clean Vendor
 function clean() {
     return del(['./vendor/']);
 }
@@ -63,21 +71,48 @@ function modules() {
 //CSS
 
 function css() {
-    
+    return gulp
+    .src('./scss/*')
+    // use global error handler
+    .pipe(plumber())
+    .pipe(sass({
+        outputStyle: 'expanded',
+        includePaths: './node_modules'
+    }))
+    .on('error', sass.logError)
+    // add browser prefixes
+    .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+    }))
+    // add banner
+    .pipe(header(banner, {
+        pkg: pkg
+    }))
+    .pipe(gulp.dest('./css'))
+    .pipe(rename({
+        suffix: '.min'
+    }))
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('./css'))
+//    .pipe(browsersync.stream());
 }
 
 
 //Watch files
 function watchFiles() {
-    gulp.watch('./css/blog.css', browserSyncReload);
+    gulp.watch('./scss/**/*', css);
+    gulp.watch('./css/*', browserSyncReload);
+    gulp.watch('./**/*.html', browserSyncReload);
 }
 
 //Define Complex Tasks
 const vendor = gulp.series(clean, modules);
-const watch = gulp.parallel(watchFiles, browserSync);
+const build = gulp.series(vendor, css);
+const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 
 
-
-exports.watch = watch;
+// Export Tasks
 exports.clean = clean;
 exports.vendor = vendor;
+exports.watch = watch;

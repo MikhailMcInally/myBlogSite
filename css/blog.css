@@ -1,16 +1,24 @@
+/*!
+
+ * myBlogSite -  v1.0.0 (https://github.com/MikhailMcInally/myBlogSite#readme)
+ * Copyright 2013-2019
+
+ * Licensed under MIT (https://github.com/MikhailMcInally/myblogsite/blob/master/LICENSE)
+ */
+
 body {
-    font-size: 20px;
-    color: #212529;
-    font-family: 'Lora', 'Times New Roman', serif;  
+  font-size: 20px;
+  color: #212529;
+  font-family: 'Lora', 'Times New Roman', serif;
 }
 
 p {
-    line-height: 1.5;
-    margin: 30px 0
+  line-height: 1.5;
+  margin: 30px 0;
 }
 
 p a {
-/*    text-decoration: underline*/
+  text-decoration: underline;
 }
 
 h1,
@@ -19,45 +27,52 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 800;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Ariel, sans-serif
+  font-weight: 800;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Ariel, sans-serif;
 }
 
 a {
-    color: #212529;
-    -webkit-transition: all .2s;
-    -moz-transition: all .2s;
-    transition: all .2s
+  color: #212529;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
-a:focus,
-a:hover {
-    color: #0085a1
+a:focus, a:hover {
+  color: #0085A1;
 }
 
 blockquote {
-    font-style: italic;
-    color: #868e96
+  font-style: italic;
+  color: #868e96;
 }
 
 ::-moz-selection {
-    color: #fff;
-    background: #0085a1;
-    text-shadow: none
+  color: #fff;
+  background: #0085A1;
+  text-shadow: none;
 }
 
 ::selection {
-    color: #fff;
-    background: #0085a1;
-    text-shadow: none
-}
-
-img::selection {
-    color: #fff;
-    background: transparent
+  color: #fff;
+  background: #0085A1;
+  text-shadow: none;
 }
 
 img::-moz-selection {
-    color: #fff;
-    background: transparent
+  color: #fff;
+  background: transparent;
+}
+
+img::selection {
+  color: #fff;
+  background: transparent;
+}
+
+img::-moz-selection {
+  color: #fff;
+  background: transparent;
+}
+
+#mainNav {
+  position: absolute;
 }
