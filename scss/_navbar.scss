@@ -1,4 +1,81 @@
 // navbar Styling
 #mainNav {
     position: absolute;
+    border-bottom: 1px solid $gray-200;
+    @include sans-serif-font;
+    .navbar-brand {
+        font-weight: 800;
+        color: $green;
+    }
+    .navbar-toggler {
+        font-weight: 800;
+        font-size: 12px;
+        padding: 15px;
+        text-transform: uppercase;
+        color: $green;
+    }
+    .navbar-nav {
+      > li.nav-item {
+        >a {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: $gray-600;
+            @include transition-all;
+                &:focus,
+                &:hover {
+                  color: $green;    
+              }
+           } 
+        }
+    //I can add several properties after I include the masthead(with image) section
+    @media only screen and (min-width: 992px) {
+            border-bottom: 1px solid transparent;
+            background: transparent;
+        //make navbar a little bit farther away
+        .navbar-brand {
+            padding: 10px 20px;
+        }
+        color: $white;
+        &:focus,
+        &:hover {
+            color: fade-out($white, 0.2);
+        }
+        .navbar-nav {
+            > li.nav-item {
+                > a {
+                    padding: 10px 20px;
+                    color
+                }
+            }
+        }
+            
+        }
+    } 
+        
 }
+
+
+// Note-to-self
+// 1. find picture that suits navbar color.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
