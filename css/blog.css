@@ -152,36 +152,50 @@ header.masthead .overlay {
   opacity: 0.5;
 }
 
+header.masthead .page-heading,
+header.masthead .post-heading,
 header.masthead .site-heading {
   padding: 200px 0 150px;
   color: #fff;
 }
 
 @media only screen and (min-width: 768px) {
+  header.masthead .page-heading,
+  header.masthead .post-heading,
   header.masthead .site-heading {
     padding: 200px 0;
   }
 }
 
-header.masthead .site-heading .subheading {
+header.masthead .page-heading,
+header.masthead .site-heading {
+  text-align: center;
+}
+
+header.masthead .page-heading h1,
+header.masthead .site-heading h1 {
+  font-size: 50px;
+  margin-top: 0;
+}
+
+header.masthead .subheading {
   font-size: 18px;
   font-weight: 300;
   line-height: 1.1;
   display: block;
   position: relative;
-  margin-right: 100px;
+  margin: 10px 0 0;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Ariel, sans-serif;
 }
 
-@media only screen and (min-width: 768px) {
-  header.masthead .site-heading .subheading {
-    font-size: 24px;
+@media only screen and (min-width: 992px) {
+  header.masthead .subheading {
     -webkit-animation-name: from-right;
     animation-name: from-right;
-    -webkit-animation-duration: 0.2s;
-    animation-duration: 0.2s;
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   @-webkit-keyframes from-right {
     0% {
@@ -203,6 +217,60 @@ header.masthead .site-heading .subheading {
 
 @media only screen and (min-width: 768px) {
   header.masthead .site-heading h1 {
+    font-size: 62.5px;
+  }
+  header.masthead .subheading {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  header.masthead .site-heading h1 {
     font-size: 80px;
+  }
+}
+
+.post-preview > a {
+  color: #212529;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.post-preview > a:focus, .post-preview > a:hover {
+  text-decoration: none;
+  color: #0085A1;
+}
+
+.post-preview > a > .post-title {
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.post-preview > a > .post-subtitle {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+
+.post-preview .post-meta {
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+  color: #868e96;
+}
+
+.post-preview .post-meta > a {
+  text-decoration: none;
+  color: #212529;
+}
+
+.post-preview .post-meta > a:focus, .post-preview .post-meta > a:hover {
+  text-decoration: underline;
+  color: #0085A1;
+}
+
+@media only screen and (min-width: 768px) {
+  .post-preview > a > .post-title {
+    font-size: 37.5px;
   }
 }

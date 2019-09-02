@@ -1,4 +1,3 @@
-
 header.masthead {
     //.masthead 
     margin-bottom: 50px;
@@ -7,6 +6,7 @@ header.masthead {
     background-attachment: scroll;
     position: relative;
     @include background-cover;
+
     // .overlay
     .overlay {
         position: absolute;
@@ -17,52 +17,82 @@ header.masthead {
         background-color: $gray-900;
         opacity: 0.5;
     }
-    
-    
-    //heading text
+
+
+    //heading classes for different pages
+    .page-heading,
+    .post-heading,
     .site-heading {
-        // .site-heading(1)
         padding: 200px 0 150px;
         color: $white;
+
         @media only screen and (min-width: 768px) {
             padding: 200px 0;
         }
-        // .subheading
-        .subheading {
-            font-size: 18px;
-            font-weight: 300;
-            line-height: 1.1;
-            display: block;
-            position: relative;
-            margin-right: 100px;
-            @include sans-serif-font;
-            //Somehow make this slide in from the left
-            @media only screen and (min-width: 768px) {
-                font-size: 24px;
-                animation-name: from-right;
-                animation-duration: 0.2s;
-                animation-timing-function: ease-out;
-                
-                @keyframes from-right {
-                    0% {left: -200px}
-                    100% {left: 0px;}
+    }
+
+    .page-heading,
+    .site-heading {
+        text-align: center;
+
+        h1 {
+            font-size: 50px;
+            margin-top: 0;
+        }
+    }
+
+    .subheading {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.1;
+        display: block;
+        position: relative;
+        margin: 10px 0 0;
+        @include sans-serif-font;
+
+        @media only screen and (min-width: 992px) {
+            animation-name: from-right;
+            animation-duration: 0.5s;
+            animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            @keyframes from-right {
+                0% {
+                    left: -200px;
+                }
+
+                100% {
+                    left: 0px;
                 }
             }
         }
-        // .site-heading(2)
-        @media only screen and (min-width: 768px) {
+    }
+
+    //Post.html Rule Sets
+    //.post-heading,
+    //.meta,
+    //.subheading,
+
+
+
+    // h1
+    @media only screen and (min-width: 768px) {
+        .site-heading {
+            h1 {
+                font-size: 62.5px;
+            }
+        }
+        .subheading {
+            font-size: 24px;
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
+        .site-heading {
             h1 {
                 font-size: 80px;
             }
         }
     }
-    
-    // .post-heading
-    .post-heading {
-        
-    }
+
+    // Additional Masthead Section CSS Rule Sets
 }
-
-
-
-
