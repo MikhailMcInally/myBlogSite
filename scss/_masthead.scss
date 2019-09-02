@@ -1,11 +1,13 @@
 
 header.masthead {
+    //.masthead 
     margin-bottom: 50px;
-    background: no-repeate center center;
+    background: no-repeat center center;
     background-color: $gray-600;
     background-attachment: scroll;
     position: relative;
     @include background-cover;
+    // .overlay
     .overlay {
         position: absolute;
         top: 0;
@@ -15,28 +17,47 @@ header.masthead {
         background-color: $gray-900;
         opacity: 0.5;
     }
-    .page-heading,
-    .post-heading,
+    
+    
+    //heading text
     .site-heading {
+        // .site-heading(1)
         padding: 200px 0 150px;
-        color: white;
+        color: $white;
         @media only screen and (min-width: 768px) {
             padding: 200px 0;
         }
+        // .subheading
         .subheading {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 300;
             line-height: 1.1;
             display: block;
-            margin: 10px 0 0;
+            position: relative;
+            margin-right: 100px;
             @include sans-serif-font;
+            //Somehow make this slide in from the left
+            @media only screen and (min-width: 768px) {
+                font-size: 24px;
+                animation-name: from-right;
+                animation-duration: 0.2s;
+                animation-timing-function: ease-out;
+                
+                @keyframes from-right {
+                    0% {left: -200px}
+                    100% {left: 0px;}
+                }
+            }
         }
+        // .site-heading(2)
         @media only screen and (min-width: 768px) {
             h1 {
                 font-size: 80px;
             }
         }
     }
+    
+    // .post-heading
     .post-heading {
         
     }
