@@ -181,6 +181,7 @@ header.masthead .site-heading h1 {
 header.masthead .subheading {
   font-size: 18px;
   font-weight: 300;
+  font-style: italic;
   line-height: 1.1;
   display: block;
   position: relative;
@@ -273,4 +274,20 @@ header.masthead .subheading {
   .post-preview > a > .post-title {
     font-size: 37.5px;
   }
+}
+
+footer {
+  padding: 50px 0 65px;
+  font-size: 50px;
+}
+
+footer .list-inline {
+  margin: 0;
+  padding: 0;
+}
+
+footer .copyright {
+  font-size: 14px;
+  margin-bottom: 0;
+  text-align: center;
 }
